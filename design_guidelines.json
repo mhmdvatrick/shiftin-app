@@ -1,0 +1,228 @@
+{
+  "app_name": "Shiftin",
+  "personality": "2 Material You / Expressive",
+  "personality_one_liner": "A warm, energetic, and intuitive F&B marketplace that uses expressive amber tones and adaptive tonal surfaces to make gig work feel empowering and approachable.",
+  "color": {
+    "light": {
+      "surface": "#FFFCF9",
+      "onSurface": "#2A2421",
+      "surfaceSecondary": "#F4EFEA",
+      "onSurfaceSecondary": "#3E3631",
+      "surfaceTertiary": "#EAE4DD",
+      "onSurfaceTertiary": "#4F453F",
+      "surfaceInverse": "#2A2421",
+      "onSurfaceInverse": "#FFFCF9",
+      "brand": "#FF8A00",
+      "onBrand": "#FFFFFF",
+      "brandPrimary": "#FF8A00",
+      "onBrandPrimary": "#FFFFFF",
+      "brandSecondary": "#FFB74D",
+      "onBrandSecondary": "#4E2A00",
+      "brandTertiary": "#FFF3E0",
+      "onBrandTertiary": "#E65C00",
+      "success": "#2E7D32",
+      "onSuccess": "#FFFFFF",
+      "warning": "#F57F17",
+      "onWarning": "#4E2A00",
+      "error": "#D32F2F",
+      "onError": "#FFFFFF",
+      "info": "#0288D1",
+      "onInfo": "#FFFFFF",
+      "border": "#EAE4DD",
+      "borderStrong": "#D7CCC2",
+      "divider": "#F4EFEA",
+      "muted": "#8A7D75"
+    },
+    "dark": {
+      "surface": "#1A1614",
+      "onSurface": "#FFFCF9",
+      "surfaceSecondary": "#2A2421",
+      "onSurfaceSecondary": "#EAE4DD",
+      "surfaceTertiary": "#38312D",
+      "onSurfaceTertiary": "#D7CCC2",
+      "surfaceInverse": "#FFFCF9",
+      "onSurfaceInverse": "#2A2421",
+      "brand": "#FF9800",
+      "onBrand": "#4E2A00",
+      "brandPrimary": "#FF9800",
+      "onBrandPrimary": "#4E2A00",
+      "brandSecondary": "#FFB74D",
+      "onBrandSecondary": "#4E2A00",
+      "brandTertiary": "#4E2A00",
+      "onBrandTertiary": "#FFD180",
+      "success": "#81C784",
+      "onSuccess": "#003300",
+      "warning": "#FFB300",
+      "onWarning": "#4E2A00",
+      "error": "#E57373",
+      "onError": "#4E0000",
+      "info": "#4FC3F7",
+      "onInfo": "#00334E",
+      "border": "#38312D",
+      "borderStrong": "#4F453F",
+      "divider": "#2A2421",
+      "muted": "#A2958C"
+    }
+  },
+  "typography": {
+    "displayFontFamily": "Outfit",
+    "textFontFamily": "Plus Jakarta Sans",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Generous spacing. Use nested tonal containers rather than hard shadows. Avoid cramped layouts by properly spacing edge margins.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": "0",
+  "navigation": "bottom_tabs",
+  "icon_set": "Phosphor",
+  "glassmorphism": {
+    "enabled": true,
+    "do's": [
+      "Use over the hero image in Job Detail screens.",
+      "Use for the sticky bottom container that holds 'Ambil Shift'.",
+      "Apply to bottom tabs when content scrolls behind them."
+    ],
+    "dont's": [
+      "Don't use glass everywhere (avoid on dense job cards)."
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Role Selection & Auth",
+      "purpose": "Allow users to choose between Worker and Business, then sign up/log in.",
+      "states": {
+        "loading": "Centered spinner with a warm transition.",
+        "empty": "N/A",
+        "error": "Standard Material You dialog or snackbar with error color."
+      },
+      "layout": "Screen split into two large tonal cards (Pekerja / Pemilik Bisnis) acting as massive touch targets. Below them, a standard email/password form."
+    },
+    {
+      "name": "Worker Home (Loker)",
+      "purpose": "Primary feed for workers to discover nearby gig shifts.",
+      "states": {
+        "loading": "Skeleton cards mirroring the job card structure.",
+        "empty": "Illustration of an empty cafe table with text 'Belum ada loker di sekitarmu' and a 'Refresh' CTA.",
+        "error": "Readable message 'Gagal memuat loker' with a Retry button."
+      },
+      "layout": "Top section: High-level summary (e.g., 'Target Hari Ini') wrapped in a brandTertiary tonal container. Below: Horizontal scroll of filter chips (Semua, Barista, Waiter, Kasir). Main content: Vertical flat list of Job Cards. Job Card: layout uses surfaceSecondary without shadows, displaying Posisi, Nama Bisnis, Jarak, Rate, Waktu, and Estimasi Total in nested blocks."
+    },
+    {
+      "name": "Job Detail & Ambil Shift",
+      "purpose": "Show comprehensive details about a shift so a worker can accept it.",
+      "states": {
+        "loading": "Skeleton layout for header image and text blocks.",
+        "empty": "N/A",
+        "error": "Error message with 'Kembali' button."
+      },
+      "layout": "Hero image of the cafe (with gradient scrim top-to-bottom for readable header text). Below image: Title, tags (Skill, Jarak). Scrollable body: Deskripsi, Syarat. A sticky container fixed at the bottom root (using glassmorphism) housing a full-width 'Ambil Shift' CTA to ensure it is always reachable (max 3 taps to accept)."
+    },
+    {
+      "name": "Attendance Check-in",
+      "purpose": "Verify worker location via GPS and identity via selfie to start the shift.",
+      "states": {
+        "loading": "Loading spinner over the camera preview while verifying.",
+        "empty": "N/A",
+        "error": "Warning if outside geofence: 'Anda belum berada di lokasi outlet'."
+      },
+      "layout": "Top half: Map preview indicating distance to outlet (Geofence status). Bottom half: Live camera preview component framed by a rounded rectangle for selfie. A massive circular or pill-shaped primary button 'Check In Sekarang' at the bottom."
+    },
+    {
+      "name": "Business Dashboard",
+      "purpose": "Allow business owners to manage posted shifts and view active workers.",
+      "states": {
+        "loading": "Skeleton list rows.",
+        "empty": "Empty state illustration of a clean kitchen with 'Belum ada loker aktif. Buat Loker pertamamu!'",
+        "error": "Error message + Retry button."
+      },
+      "layout": "Top segmented control (Aktif, Berjalan, Selesai). A list of created shifts showing quick stats (misal: 2/3 Pekerja Terpenuhi). Floating Action Button (FAB) at the bottom right for 'Buat Loker' using glass over a brandTertiary base."
+    },
+    {
+      "name": "Buat Loker (Create Job)",
+      "purpose": "Multi-step form for businesses to post a new gig.",
+      "states": {
+        "loading": "Spinner on the sticky submit button.",
+        "empty": "N/A",
+        "error": "Inline form validation errors in soft error surface."
+      },
+      "layout": "Step indicator at the top. Segmented controls and large touch targets for selecting positions (Barista, Kitchen Helper, dll). Clear typography. Sticky 'Selanjutnya' CTA at the bottom inside KeyboardAvoidingView."
+    },
+    {
+      "name": "Business Job Detail (Worker List)",
+      "purpose": "View who has taken the shift, monitor attendance, and rate them post-shift.",
+      "states": {
+        "loading": "Skeleton list of workers.",
+        "empty": "Empty state: 'Belum ada pekerja yang mengambil shift ini.'",
+        "error": "Error loading data with a retry CTA."
+      },
+      "layout": "Header with job summary. Below, a list of Worker Cards showing their Avatar, Name, Rating, and a large Status Chip (Belum Hadir, Hadir, Selesai). If 'Selesai', a button to 'Beri Nilai' (Rate 1-5 stars) appears."
+    }
+  ],
+  "images": {
+    "worker_hero_banner": {
+      "url": "https://images.unsplash.com/photo-1599549192669-6baac5d32432?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwxfHxpbmRvbmVzaWFuJTIwY2FmZSUyMHdvcmtlciUyMGJhcmlzdGF8ZW58MHx8fHwxNzkwODgzNjU5fDA&ixlib=rb-4.1.0&q=85",
+      "dark": "https://images.unsplash.com/photo-1520460095596-52dcd38c5f20?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwyfHxpbmRvbmVzaWFuJTIwY2FmZSUyMHdvcmtlciUyMGJhcmlzdGF8ZW58MHx8fHwxNzkwODgzNjU5fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Indonesian cafe worker barista"
+    },
+    "business_hero_banner": {
+      "url": "https://images.unsplash.com/photo-1588416820614-f8d6ac6cea56?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzN8MHwxfHNlYXJjaHwxfHxidXN5JTIwcmVzdGF1cmFudCUyMGtpdGNoZW4lMjBpbmRvbmVzaWFufGVufDB8fHx8MTc5MDg4MzY1OXww&ixlib=rb-4.1.0&q=85",
+      "dark": "https://images.unsplash.com/photo-1640583342012-4622f31b650d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzN8MHwxfHNlYXJjaHwyfHxidXN5JTIwcmVzdGF1cmFudCUyMGtpdGNoZW4lMjBpbmRvbmVzaWFufGVufDB8fHx8MTc5MDg4MzY1OXww&ixlib=rb-4.1.0&q=85",
+      "alt": "Busy restaurant kitchen in Indonesia"
+    },
+    "empty_state": {
+      "url": "https://images.unsplash.com/photo-1678250707989-c97faf1ef02f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwyfHxlbXB0eSUyMGNhZmUlMjB0YWJsZSUyMG1pbmltYWx8ZW58MHx8fHwxNzkwODgzNjU5fDA&ixlib=rb-4.1.0&q=85",
+      "dark": "https://images.unsplash.com/photo-1567934124115-2eca8953796b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwxfHxlbXB0eSUyMGNhZmUlMjB0YWJsZSUyMG1pbmltYWx8ZW58MHx8fHwxNzkwODgzNjU5fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Empty cafe table representing no shifts available"
+    }
+  },
+  "haptics": {
+    "role_selection": "impactLight",
+    "pull_to_refresh_feed": "impactMedium",
+    "filter_chip_press": "selection",
+    "ambil_shift_press": "impactHeavy",
+    "check_in_success": "notificationSuccess",
+    "check_in_error": "notificationError",
+    "tab_change": "selection",
+    "step_next": "impactLight"
+  },
+  "instructions_to_main_agent": [
+    "Follow the Material You / Expressive personality strictly. DO NOT use standard Material 3 indigo. Rely heavily on tonal containers and adaptive colors using the provided amber/orange F&B palette.",
+    "No pure white cards with hard drop shadows. Depth must be created through tonal surfaces (surfaceSecondary, brandTertiary) and spacing.",
+    "Implement the Sticky CTA pattern exactly: Wrap 'Ambil Shift' and 'Check In Sekarang' in a fixed absolute container at the bottom over the scroll view, using glassmorphism (expo-blur) or solid surface to keep it reachable within 3 taps without scrolling.",
+    "For Attendance Check-In, integrate map/geofence status visually on top and a camera preview framed clearly on the bottom. Add haptics 'notificationSuccess' upon check-in completion.",
+    "For the 'Buat Loker' form, ensure labels are above inputs (never floating), use large touch targets (pill-shaped segmented controls) for selecting skills (Barista, Kasir, etc.). Submit CTA must stick to the bottom above the keyboard using KeyboardAvoidingView.",
+    "Always apply a top-to-bottom vertical linear gradient scrim (transparent to surfaceInverse) over any hero background images before layering text (like in Job Detail screens). Ensure contrast is AA readable.",
+    "Default language is Bahasa Indonesia. Keep tone casual but professional (e.g. 'Ambil Shift', 'Loker Terdekat', 'Dompet', 'Beri Nilai')."
+  ]
+}

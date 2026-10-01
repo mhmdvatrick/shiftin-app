@@ -1,0 +1,69 @@
+{
+  "expo": {
+    "name": "frontend",
+    "slug": "frontend",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "frontend",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.emergent.shiftmarketplace.c9ib12",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Cari loker terdekat dan presensi di outlet",
+        "NSCameraUsageDescription": "Ambil selfie sebagai bukti kerja saat presensi",
+        "NSPhotoLibraryUsageDescription": "Unggah foto profil, KTP, dan outlet"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#FF8A00"
+      },
+      "package": "com.emergent.shiftmarketplace.c9ib12",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA"
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-image.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#FF8A00"
+        }
+      ],
+      "expo-font",
+      "expo-image",
+      "expo-secure-store",
+      "expo-web-browser",
+      "expo-status-bar",
+      [
+        "expo-location",
+        { "locationWhenInUsePermission": "Cari loker terdekat dan presensi di outlet" }
+      ],
+      [
+        "expo-camera",
+        { "cameraPermission": "Ambil selfie sebagai bukti kerja saat presensi" }
+      ],
+      [
+        "expo-image-picker",
+        { "photosPermission": "Unggah foto profil, KTP, dan outlet" }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
